@@ -1,29 +1,27 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ahmed Mohamed</title>
-  <meta name="description" content="Ahmed Mohamed — Aspiring Software Developer." />
+  <title>Ahmed Mohamed — Portfolio</title>
 
-  <!-- Styles -->
+  <!-- Favicons (optional) -->
+  <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="favicon-16.png" sizes="16x16">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" sizes="180x180">
+
   <link rel="stylesheet" href="styles.css" />
-
-  <!-- Font Awesome (icons for Contact section) -->
-  <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-  <!-- Favicon (optional) -->
-  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 </head>
-
-<body>
+<body id="top">
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- Header -->
+  <!-- Header (no logo) -->
   <header class="site-header">
+    <!-- Grid: [toggle] [links] -->
     <nav class="nav container" aria-label="Main">
-      <a class="logo" href="#home" aria-label="Home">AM</a>
+      <button id="theme-toggle" type="button" aria-label="Toggle theme">🌙 Dark</button>
+
       <ul class="nav-links">
         <li><a class="active" href="#home">Home</a></li>
         <li><a href="#about">About</a></li>
@@ -36,48 +34,35 @@
 
   <main id="main">
     <!-- Hero -->
-    <section id="home" class="hero container section">
+    <section id="home" class="section hero container">
       <div class="hero-left">
         <p class="kicker">Hi, I’m</p>
-        <h1 class="title"><span>Ahmed</span> <span>Mohamed</span></h1>
+        <h1>Ahmed Mohamed</h1>
         <p class="subtitle">Aspiring Software Engineer.</p>
-
         <div class="cta">
           <a class="btn" href="#projects">See Projects</a>
           <a class="btn ghost" href="#contact">Contact</a>
         </div>
       </div>
-
       <div class="hero-right">
-        <img src="profile.jpg" alt="Portrait of Ahmed Mohamed" />
+        <img src="profile.jpg" alt="Portrait of Ahmed Mohamed">
       </div>
     </section>
 
-    <!-- About (pulled up slightly) -->
+    <!-- About -->
     <section id="about" class="section container">
       <h2>About</h2>
-      <p>
-        I'm a computer science major with an honors integrated minor at St. Cloud State University.
-        I'm learning programming one piece at a time, building a strong foundation through both
-        classwork and personal projects. I enjoy creating things that have a purpose, whether it’s
-        this website or simple tools that automate everyday tasks. I'm self-motivated and like learning
-        new things, especially when I can see them come to life.
-      </p>
-      <p>
-        Outside of classes, I challenge myself with projects that go beyond the syllabus. I believe
-        real growth happens when you're uncomfortable and figuring things out on your own. That’s why
-        I like exploring challenging ideas that push my limits and help me become more confident in my skills.
-      </p>
-      <p>
-        When I’m not coding, I enjoy hooping, watching anime, reading manga, working out, and spending time with my family.
-      </p>
+      <p>I'm a computer science major with an honors integrated minor at St. Cloud State University. I'm learning programming one piece at a time, building a strong foundation through both classwork and personal projects. I enjoy creating things that have a purpose, whether it’s this website or simple tools that automate everyday tasks. I'm self-motivated and like learning new things, especially when I can see them come to life.</p>
+      <p>Outside of classes, I challenge myself with projects that go beyond the syllabus. I believe real growth happens when you're uncomfortable and figuring things out on your own. That’s why I like exploring challenging ideas that push my limits and help me become more confident in my skills.</p>
+      <p>When I’m not coding, I enjoy hooping, watching anime, reading manga, working out, and spending time with my family.</p>
     </section>
 
-    <!-- Skills (kept minimal so nav works) -->
+    <!-- Skills -->
     <section id="skills" class="section container">
       <h2>Skills</h2>
       <ul class="skills">
-        <li>HTML</li><li>CSS</li><li>JavaScript</li><li>Python</li><li>C++</li>
+        <li>HTML</li><li>CSS</li><li>JavaScript</li>
+        <li>Python</li><li>C++</li>
       </ul>
     </section>
 
@@ -85,33 +70,27 @@
     <section id="projects" class="section container">
       <h2>Projects</h2>
       <div class="projects-placeholder">
-        <p class="pill">Coming soon</p>
+        <span class="pill">Coming Soon</span>
         <p>I'm building purposeful projects that automate everyday tasks and sharpen my fundamentals. Check back soon.</p>
       </div>
     </section>
 
-    <!-- Contact (icons only here) -->
+    <!-- Contact -->
     <section id="contact" class="section container">
       <h2>Contact</h2>
-      <p>Feel free to reach out on my social platforms below!</p>
-
-      <div class="contact-icons">
-        <a href="https://www.linkedin.com/in/-ahmedmohamed/" target="_blank" rel="noopener" aria-label="LinkedIn">
-          <i class="fa-brands fa-linkedin-in"></i>
-        </a>
-        <a href="https://github.com/ahmedcodess" target="_blank" rel="noopener" aria-label="GitHub">
-          <i class="fa-brands fa-square-github"></i>
-        </a>
+      <p class="contact-note">Feel free to reach out on my social platforms below!</p>
+      <div class="contact-icons" aria-label="Contact links">
+        <a href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="https://github.com/ahmedcodess" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <p>© 2025 Ahmed Mohamed. All rights reserved.</p>
-  </footer>
+  <footer class="site-footer container">© <span id="year"></span> Ahmed Mohamed. All rights reserved.</footer>
+
+  <script src="script.js" defer></script>
 </body>
 </html>
-
 
 
 

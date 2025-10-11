@@ -1,14 +1,34 @@
-/* ---------- Theme ---------- */
+/* =========================================
+   THEME TOKENS
+   Light (default): Tan + Navy
+   Dark (toggle):   Blue + Charcoal
+   ========================================= */
+
+/* ---------- LIGHT (Default) : Tan + Navy ---------- */
 :root{
-  --bg: #0b1217;
-  --bg-soft:#0e171e;
-  --text:#d9e1ea;
-  --muted:#aab4c0;
-  --primary:#60a5fa;
-  --panel: rgba(255,255,255,0.04);
-  --ring: rgba(96,165,250,0.25);
+  --bg:        #F7D9B1;
+  --bg-soft:   #FDE6C8;
+  --text:      #1B1B1F;
+  --muted:     #5B616C;
+  --primary:   #27406D;
+  --panel:     rgba(39, 64, 109, 0.10);
+  --ring:      rgba(39, 64, 109, 0.22);
 }
 
+/* ---------- DARK (Toggle) : Blue + Charcoal ---------- */
+:root[data-theme="dark"]{
+  --bg:        #1B1923;
+  --bg-soft:   #221F2B;
+  --text:      #E9F1FF;
+  --muted:     #A9B6CC;
+  --primary:   #4F86C6;
+  --panel:     rgba(79, 134, 198, 0.16);
+  --ring:      rgba(79, 134, 198, 0.28);
+}
+
+/* =========================================
+   BASE
+   ========================================= */
 *{ box-sizing: border-box; }
 html,body{ height:100%; }
 
@@ -18,8 +38,8 @@ body{
                "Apple Color Emoji", "Segoe UI Emoji";
   color:var(--text);
   background:
-    radial-gradient(1200px 600px at 70% 0%, rgba(96,165,250,0.08), transparent 60%),
-    linear-gradient(180deg, var(--bg), #0a0f14 60%);
+    radial-gradient(900px 420px at 12% 0%, color-mix(in srgb, var(--primary) 18%, transparent), transparent 60%),
+    linear-gradient(180deg, var(--bg-soft) 0%, var(--bg) 60%);
 }
 
 img{ display:block; max-width:100%; }
@@ -29,123 +49,157 @@ img{ display:block; max-width:100%; }
 h1,h2{ margin:0 0 16px; }
 h1{ font-size: clamp(2.6rem, 5vw, 4.2rem); letter-spacing:-0.02em; }
 h2{ font-size: clamp(1.6rem, 3vw, 2.0rem); }
-
 p{ color:var(--muted); line-height:1.7; margin:0 0 12px; }
 
 .skip-link{ position:absolute; left:-9999px; }
-.skip-link:focus{ left:16px; top:16px; background:var(--primary); color:#0b0f14; padding:8px 12px; border-radius:8px; }
+.skip-link:focus{ left:16px; top:16px; background:var(--primary); color:#fff; padding:8px 12px; border-radius:8px; }
 
-/* ---------- Header ---------- */
+/* =========================================
+   HEADER / NAV  (NO LOGO)
+   ========================================= */
 .site-header{
   position: sticky; top:0; z-index:10;
-  background: linear-gradient(180deg, rgba(11,18,23,0.95), rgba(11,18,23,0.75) 60%, transparent);
-  backdrop-filter: saturate(140%) blur(8px);
-  border-bottom:1px solid rgba(255,255,255,0.05);
+  background: linear-gradient(180deg, rgba(255,255,255,0.66), rgba(255,255,255,0.44) 60%, transparent);
+  backdrop-filter: saturate(120%) blur(6px);
+  border-bottom:1px solid color-mix(in srgb, var(--primary) 18%, transparent);
 }
-.nav{ display:flex; align-items:center; justify-content:space-between; height:64px; }
-.logo{ color:var(--text); text-decoration:none; font-weight:800; letter-spacing:.08em; }
-.nav-links{ list-style:none; display:flex; gap:18px; margin:0; padding:0; }
+:root[data-theme="dark"] .site-header{
+  background: linear-gradient(180deg, rgba(23,20,23,0.82), rgba(23,20,23,0.52) 60%, transparent);
+}
+
+/* Two columns: [toggle] [links] */
+.nav{
+  display:grid;
+  grid-template-columns: auto 1fr;
+  align-items:center;
+  height:56px;                 /* compact / lower header */
+  gap:16px;
+}
+.nav-links{
+  list-style:none; display:flex; gap:18px; margin:0; padding:0;
+  justify-self:end;
+}
 .nav-links a{
   color:var(--muted); text-decoration:none; padding:8px 10px; border-radius:10px;
 }
 .nav-links a:hover, .nav-links a.active{
-  color:var(--text); background: rgba(255,255,255,0.04);
+  color:var(--text);
+  background: color-mix(in srgb, var(--primary) 12%, transparent);
 }
 
-/* ---------- Hero ---------- */
+/* Theme toggle button (left) */
+#theme-toggle{
+  background:transparent;
+  color:var(--text);
+  border:1px solid color-mix(in srgb, var(--text) 20%, transparent);
+  border-radius:12px;
+  padding:10px 14px;
+  font-weight:600;
+  cursor:pointer;
+  box-shadow: 0 8px 24px var(--ring);
+  transition: transform .12s ease, background .12s ease, box-shadow .12s ease;
+  display:inline-flex; align-items:center; gap:8px;
+}
+#theme-toggle:hover{
+  transform: translateY(-1px);
+  background: color-mix(in srgb, var(--primary) 22%, transparent);
+  box-shadow: 0 12px 30px var(--ring);
+}
+
+/* =========================================
+   HERO
+   ========================================= */
 .hero{
   display:grid;
   grid-template-columns: 1.1fr 0.9fr;
   gap:min(6vw,64px);
   align-items:center;
-  padding-top:60px;
+  padding-top:48px;  /* header is lower */
 }
-
 .kicker{ color:var(--muted); margin:0 0 8px; }
-.subtitle{ margin:12px 0 24px; }
+.subtitle{ margin:12px 0 24px; color:var(--muted); }
 
 .cta{ display:flex; gap:16px; align-items:center; }
 
 .btn{
   display:inline-flex; align-items:center; justify-content:center;
   padding:14px 22px; border-radius:16px; text-decoration:none; font-weight:600;
-  background:var(--primary); color:#0b0f14; box-shadow:0 10px 30px var(--ring);
+  background:var(--primary); color:#ffffff;
+  box-shadow: 0 10px 30px var(--ring);
 }
 .btn.ghost{
   background:transparent; color:var(--text);
-  border:1px solid rgba(255,255,255,0.2);
-  box-shadow:none;
+  border:1px solid color-mix(in srgb, var(--text) 14%, transparent);
 }
 .btn:hover{ transform: translateY(-1px); }
 
 .hero-right img{
   width:280px; height:280px; object-fit:cover; object-position:50% 28%;
   border-radius:999px; border:6px solid #fff; background:#fff;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.35), 0 0 80px rgba(96,165,250,0.25);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.18),
+              0 0 70px color-mix(in srgb, var(--primary) 20%, transparent);
   margin-inline:auto;
 }
 
-/* Tighten spacing after hero & pull About up a bit */
+/* Section spacing */
 #home.section{ padding-bottom:56px; }
 #about{ padding-top:56px; }
 
-/* ---------- Skills ---------- */
+/* =========================================
+   SKILLS
+   ========================================= */
 .skills{ display:flex; flex-wrap:wrap; gap:10px; padding:0; list-style:none; }
 .skills li{
   padding:8px 12px; background:var(--panel);
-  border:1px solid rgba(255,255,255,0.06);
+  border:1px solid var(--ring);
   border-radius:12px; color:var(--text);
 }
 
-/* ---------- Projects ---------- */
+/* =========================================
+   PROJECTS
+   ========================================= */
 .projects-placeholder{
-  border:1px dashed rgba(255,255,255,0.2);
-  background:rgba(255,255,255,0.03);
+  border:1px dashed color-mix(in srgb, var(--text) 18%, transparent);
+  background: color-mix(in srgb, var(--text) 3%, transparent);
   padding:36px; border-radius:20px; text-align:center;
 }
 .pill{
   display:inline-block; padding:8px 16px; border-radius:999px;
-  background:var(--primary); color:#0b0f14; font-weight:700; margin-bottom:10px;
+  background:var(--primary); color:#ffffff; font-weight:700; margin-bottom:10px;
 }
 
-/* ---------- Contact (icons only here) ---------- */
+/* =========================================
+   CONTACT
+   ========================================= */
+.contact-note{ color:var(--muted); margin:8px 0 24px; }
+
 .contact-icons{
-  display:flex;
-  justify-content:flex-start;     /* aligns with left content like your screenshot */
-  align-items:center;
-  gap:28px;                       /* separation between icons */
-  margin-top:14px;
-  flex-wrap:nowrap;
+  display:flex; justify-content:flex-start; align-items:center; gap:28px;
 }
 .contact-icons a{
-  display:inline-flex;
-  align-items:center; justify-content:center;
+  display:inline-flex; align-items:center; justify-content:center;
   width:48px; height:48px;
-  color:#cfd8e3;
-  text-decoration:none;
-  line-height:1;
-}
-.contact-icons a:hover,
-.contact-icons a:focus,
-.contact-icons a:visited,
-.contact-icons a:active{
-  color:#cfd8e3;                   /* no color changes */
+  color: color-mix(in srgb, var(--primary) 35%, #1f2a44);
   text-decoration:none;
 }
+:root[data-theme="dark"] .contact-icons a{ color:#E6F0FF; }
 .contact-icons i{ font-size:32px; }
 
-/* Hide ANY old hero socials row if still present in HTML */
-.hero .socials{ display:none !important; }
-
-/* ---------- Footer ---------- */
+/* =========================================
+   FOOTER
+   ========================================= */
 .site-footer{ text-align:center; padding:40px 0 60px; color:var(--muted); }
 
-/* ---------- Responsive ---------- */
+/* =========================================
+   RESPONSIVE
+   ========================================= */
 @media (max-width: 900px){
   .hero{ grid-template-columns:1fr; }
   .hero-right{ order:-1; }
   .hero-right img{ width:220px; height:220px; }
 }
-
-
-
+#contact::before{
+  content:"";
+  display:block;
+  height: 80px;  /* increase to push it further down */
+}
